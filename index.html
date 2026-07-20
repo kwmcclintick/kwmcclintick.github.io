@@ -79,7 +79,71 @@
             letter-spacing: -0.01em;
         }
 
-        /* Card Layout Layouts */
+        /* Responsive Badge Container Architecture */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .badge-wrapper {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .badge {
+            background: #161b22;
+            border: 1px solid var(--border-color);
+            color: var(--accent-color);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .badge:hover {
+            border-color: var(--accent-color);
+            background: var(--accent-glow);
+        }
+
+        /* Desktop In-Frame Tooltip System */
+        .tooltip-text {
+            background: var(--tooltip-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-family: ui-monospace, SFMono-Regular, monospace;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            z-index: 10;
+        }
+
+        /* Prevent specific edge bleeds by shifting the final element's tooltip layout alignment */
+        .badge-wrapper:last-child .tooltip-text {
+            left: auto;
+            right: 0;
+        }
+
+        .badge-wrapper:hover .tooltip-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Dynamic Grid Layouts */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -117,120 +181,6 @@
             line-height: 1.5;
         }
 
-        /* Enhanced Methodology Flow */
-        .process-flow {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .process-flow .card {
-            width: 100%;
-            position: relative;
-        }
-
-        /* Modern Custom Geometric Chevron */
-        .arrow-divider {
-            width: 100%;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .arrow-divider::before {
-            content: "";
-            position: absolute;
-            width: 1px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--border-color), transparent);
-        }
-
-        .arrow-icon {
-            width: 32px; height: 32px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            font-weight: bold;
-            z-index: 2;
-            box-shadow: 0 0 12px var(--accent-glow);
-        }
-
-        /* Badges Stack */
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 1.5rem;
-        }
-
-        .badge {
-            position: relative;
-            background: #161b22;
-            border: 1px solid var(--border-color);
-            color: var(--accent-color);
-            padding: 0.35rem 0.85rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-            transition: border-color 0.2s ease, background-color 0.2s ease;
-            cursor: pointer;
-        }
-
-        .badge:hover {
-            border-color: var(--accent-color);
-            background: var(--accent-glow);
-        }
-
-        /* Custom Callout Tooltips */
-        .badge::after, .badge::before {
-            position: absolute;
-            left: 50%;
-            bottom: 100%;
-            transform: translateX(-50%) translateY(4px);
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            z-index: 10;
-        }
-
-        /* The Tooltip Box */
-        .badge::after {
-            content: attr(data-callout);
-            background: var(--tooltip-bg);
-            border: 1px solid var(--border-color);
-            color: #fff;
-            padding: 0.5rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            margin-bottom: 8px;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
-
-        /* The Tooltip Arrow */
-        .badge::before {
-            content: "";
-            border-width: 5px 5px 0 5px;
-            border-style: solid;
-            border-color: var(--border-color) transparent transparent transparent;
-            margin-bottom: 4px;
-        }
-
-        /* Hover States for Callouts */
-        .badge:hover::after, .badge:hover::before {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
         /* Refined Call to Action Buttons */
         .contact-links {
             display: flex;
@@ -263,17 +213,6 @@
             transform: scale(0.98);
         }
 
-        .btn-secondary {
-            background-color: #21262d;
-            border: 1px solid var(--border-color);
-            color: #c9d1d9;
-        }
-
-        .btn-secondary:hover {
-            background-color: #30363d;
-            border-color: #8b949e;
-        }
-
         footer {
             text-align: center;
             margin-top: 6rem;
@@ -283,22 +222,72 @@
             font-size: 0.85rem;
             font-family: ui-monospace, SFMono-Regular, monospace;
         }
+
+        /* Mobile Viewport Safety Optimization Blueprint */
+        @media (max-width: 600px) {
+            body {
+                padding: 2rem 1rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .badge-container {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .badge-wrapper {
+                width: 100%;
+            }
+            .badge {
+                width: 100%;
+                text-align: left;
+            }
+            /* Transforms floating tooltips into persistent, structural micro-copy on mobile devices */
+            .tooltip-text {
+                position: relative;
+                top: 0;
+                left: 0 !important;
+                right: 0 !important;
+                opacity: 1;
+                transform: none;
+                box-shadow: none;
+                background: transparent;
+                border: none;
+                padding: 0.25rem 0 0 0.5rem;
+                white-space: normal;
+                border-left: 2px solid var(--border-color);
+                margin-top: 4px;
+                border-radius: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Mach Software Consulting</h1>
+            <h1>Mach Systems Consulting</h1>
             <p class="highlight">Turning signals into solutions for C++ systems performance problems</p>
         </header>
-        
+
         <section id="who">
             <h2>Who I help</h2>
             <div class="badge-container">
-                <span class="badge" data-callout="HFT, Market Making, Execution Engines">Finance</span>
-                <span class="badge" data-callout="ROS Tuning, Sensor Processing, Real-time Linux">Autonomous Vehicles</span>
-                <span class="badge" data-callout="Custom Engines, Asset Pipelines, Low-overhead Systems">Game Development</span>
-                <span class="badge" data-callout="High-volume Infrastructure, Packet Processing">Telecommunications</span>
+                <div class="badge-wrapper">
+                    <span class="badge">Finance</span>
+                    <span class="tooltip-text">HFT, Market Making, Execution Engines</span>
+                </div>
+                <div class="badge-wrapper">
+                    <span class="badge">Autonomous Vehicles</span>
+                    <span class="tooltip-text">ROS Tuning, Sensor Processing, Real-time Linux</span>
+                </div>
+                <div class="badge-wrapper">
+                    <span class="badge">Game Development</span>
+                    <span class="tooltip-text">Custom Engines, Asset Pipelines, Low-overhead Systems</span>
+                </div>
+                <div class="badge-wrapper">
+                    <span class="badge">Telecommunications</span>
+                    <span class="tooltip-text">High-volume Infrastructure, Packet Processing</span>
+                </div>
             </div>
         </section>
 
@@ -315,7 +304,7 @@
                         <p>Your software is going to have more workload, and you need help planning how to mitigate risks to throughput and latency.</p>
                     </div>
                 </div>
-            </section>         
+            </section>
 
              <section id="contact">
                 <h2>Eliminate Bottlenecks</h2>
