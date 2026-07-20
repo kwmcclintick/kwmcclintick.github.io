@@ -9,10 +9,15 @@
         :root {
             --bg-color: #0d1117;
             --text-color: #c9d1d9;
+            --text-muted: #8b949e;
             --accent-color: #58a6ff;
+            --accent-glow: rgba(88, 166, 255, 0.15);
             --card-bg: #161b22;
+            --card-hover: #1f242c;
             --border-color: #30363d;
+            --border-hover: #444c56;
             --success-color: #2ea44f;
+            --success-hover: #3fb950;
         }
 
         * {
@@ -26,151 +31,215 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding: 2rem 1rem;
+            padding: 4rem 1.5rem;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 750px;
             margin: 0 auto;
         }
 
         header {
             border-bottom: 1px solid var(--border-color);
-            padding-bottom: 2rem;
-            margin-bottom: 3rem;
+            padding-bottom: 2.5rem;
+            margin-bottom: 3.5rem;
         }
 
         h1 {
             color: #fff;
-            font-size: 2.5rem;
+            font-size: 2.75rem;
             font-weight: 800;
+            letter-spacing: -0.03em;
             margin-bottom: 0.5rem;
         }
 
         h2 {
             color: #fff;
-            font-size: 1.5rem;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent-color);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--accent-color);
             padding-left: 0.75rem;
+            letter-spacing: -0.01em;
         }
 
         p {
             margin-bottom: 1.25rem;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            color: #e6edf3;
         }
 
         .highlight {
             color: var(--accent-color);
-            font-weight: 600;
+            font-weight: 500;
+            font-size: 1.2rem;
+            letter-spacing: -0.01em;
         }
 
+        /* Card Layout Layouts */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            gap: 1.25rem;
             margin-top: 1.5rem;
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            border-radius: 6px;
+            padding: 1.75rem;
+            border-radius: 8px;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.2s ease, 
+                        box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+            background-color: var(--card-hover);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         }
 
         .card h3 {
             color: #fff;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
         }
 
-        /* Methodology Section - Stacked & Full Width */
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* Enhanced Methodology Flow */
         .process-flow {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 1.5rem;
+            gap: 0.5rem;
         }
 
         .process-flow .card {
             width: 100%;
-        }
-
-        /* Large Centered Downward Arrows */
-        .arrow {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            text-align: center;
-            line-height: 1;
-            margin: 0.75rem 0;
-            font-weight: bold;
-            user-select: none;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
             position: relative;
-            padding-left: 1.25rem;
         }
 
-        li::before {
-            content: "→";
+        /* Modern Custom Geometric Chevron */
+        .arrow-divider {
+            width: 100%;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .arrow-divider::before {
+            content: "";
             position: absolute;
-            left: 0;
-            color: var(--accent-color);
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--border-color), transparent);
         }
 
+        .arrow-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: bold;
+            z-index: 2;
+            box-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        /* Badges Stack */
         .badge-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 0.6rem;
+            margin-top: 1.5rem;
         }
 
         .badge {
-            background: #21262d;
+            background: #161b22;
             border: 1px solid var(--border-color);
-            color: #8b949e;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
+            color: var(--accent-color);
+            padding: 0.35rem 0.85rem;
+            border-radius: 6px;
             font-size: 0.85rem;
-            font-family: monospace;
+            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+            transition: border-color 0.2s ease, background-color 0.2s ease;
         }
 
+        .badge:hover {
+            border-color: var(--accent-color);
+            background: var(--accent-glow);
+        }
+
+        /* Refined Call to Action Buttons */
         .contact-links {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--success-color);
             color: white;
             padding: 0.75rem 1.5rem;
             font-weight: 600;
+            font-size: 0.95rem;
             border-radius: 6px;
             text-decoration: none;
-            transition: background 0.2s;
+            transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.1s ease;
+            cursor: pointer;
+            border: 1px solid rgba(245, 245, 245, 0.05);
         }
 
         .btn:hover {
-            background-color: #2c974b;
+            background-color: var(--success-hover);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background-color: #21262d;
+            border: 1px solid var(--border-color);
+            color: #c9d1d9;
+        }
+
+        .btn-secondary:hover {
+            background-color: #30363d;
+            border-color: #8b949e;
         }
 
         footer {
             text-align: center;
-            margin-top: 5rem;
+            margin-top: 6rem;
             padding-top: 2rem;
             border-top: 1px solid var(--border-color);
-            color: #8b949e;
-            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: ui-monospace, SFMono-Regular, monospace;
         }
     </style>
 </head>
@@ -180,6 +249,7 @@
             <h1>Mach Software Consulting</h1>
             <p class="highlight">Turning signals into solutions for C++ systems performance problems</p>
         </header>
+        
         <main>
             <section id="services">
                 <h2>Consulting Capabilities</h2>
@@ -203,14 +273,18 @@
                         <p>Just asking and answering these questions often points to a cause and solution.</p>
                     </div>
                     
-                    <div class="arrow">&darr;</div>
+                    <div class="arrow-divider">
+                        <div class="arrow-icon">&darr;</div>
+                    </div>
                     
                     <div class="card">
                         <h3>U.S.E. Method</h3>
                         <p>Measuring per-resource utilization, saturation, and errors turns "unknown-unknowns" into "known-unknowns".</p>
                     </div>
                     
-                    <div class="arrow">&darr;</div>
+                    <div class="arrow-divider">
+                        <div class="arrow-icon">&darr;</div>
+                    </div>
                     
                     <div class="card">
                         <h3>Scientific Method</h3>
@@ -234,16 +308,4 @@
 
             <section id="contact">
                 <h2>Eliminate Bottlenecks</h2>
-                <p>Ready to trace your performance issues directly to the root source code? Let's fix it.</p>
-                <div class="contact-links">
-                    <a href="mailto:kwmcclintick@gmail.com" class="btn">Initiate Codebase Audit</a>
-                    <a href="https://www.linkedin.com/in/kyle-mcclintick-790813102" target="_blank" rel="noopener noreferrer" class="btn">Connect on LinkedIn</a>
-                </div>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2026 Mach Consulting. All code optimized to O3.</p>
-        </footer>
-    </div>
-</body>
-</html>
+                <p style="color: var(--text-muted);">Ready to trace your performance issues directly to the root source code? Let's fix it.</p>
