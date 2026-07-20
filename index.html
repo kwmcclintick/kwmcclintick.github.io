@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="High-performance C++ consulting. Low-latency, systems tuning, and mechanical sympathy for critical infrastructure.">
-    <title>Mach Systems Consulting | High-Efficiency C++</title>
+    <title>Mach Systems Consulting | Turning Signals into Solutions</title>
     <style>
         :root {
             --bg-color: #0d1117;
@@ -18,6 +18,7 @@
             --border-hover: #444c56;
             --success-color: #2ea44f;
             --success-hover: #3fb950;
+            --tooltip-bg: #1f242c;
         }
 
         * {
@@ -91,9 +92,7 @@
             border: 1px solid var(--border-color);
             padding: 1.75rem;
             border-radius: 8px;
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.2s ease, 
-                        box-shadow 0.2s ease;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .card:hover {
@@ -150,8 +149,7 @@
         }
 
         .arrow-icon {
-            width: 32px;
-            height: 32px;
+            width: 32px; height: 32px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 50%;
@@ -174,6 +172,7 @@
         }
 
         .badge {
+            position: relative;
             background: #161b22;
             border: 1px solid var(--border-color);
             color: var(--accent-color);
@@ -182,11 +181,54 @@
             font-size: 0.85rem;
             font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
             transition: border-color 0.2s ease, background-color 0.2s ease;
+            cursor: pointer;
         }
 
         .badge:hover {
             border-color: var(--accent-color);
             background: var(--accent-glow);
+        }
+
+        /* Custom Callout Tooltips */
+        .badge::after, .badge::before {
+            position: absolute;
+            left: 50%;
+            bottom: 100%;
+            transform: translateX(-50%) translateY(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10;
+        }
+
+        /* The Tooltip Box */
+        .badge::after {
+            content: attr(data-callout);
+            background: var(--tooltip-bg);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            margin-bottom: 8px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        /* The Tooltip Arrow */
+        .badge::before {
+            content: "";
+            border-width: 5px 5px 0 5px;
+            border-style: solid;
+            border-color: var(--border-color) transparent transparent transparent;
+            margin-bottom: 4px;
+        }
+
+        /* Hover States for Callouts */
+        .badge:hover::after, .badge:hover::before {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
         /* Refined Call to Action Buttons */
@@ -250,6 +292,16 @@
             <p class="highlight">Turning signals into solutions for C++ systems performance problems</p>
         </header>
         
+        <section id="who">
+            <h2>Who I help</h2>
+            <div class="badge-container">
+                <span class="badge" data-callout="HFT, Market Making, Execution Engines">Finance</span>
+                <span class="badge" data-callout="ROS Tuning, Sensor Processing, Real-time Linux">Autonomous Vehicles</span>
+                <span class="badge" data-callout="Custom Engines, Asset Pipelines, Low-overhead Systems">Game Development</span>
+                <span class="badge" data-callout="High-volume Infrastructure, Packet Processing">Telecommunications</span>
+            </div>
+        </section>
+
         <main>
             <section id="services">
                 <h2>Consulting Capabilities</h2>
@@ -263,48 +315,7 @@
                         <p>Your software is going to have more workload, and you need help planning how to mitigate risks to throughput and latency.</p>
                     </div>
                 </div>
-            </section>
-
-            <section id="methodology">
-                <h2>Our Process</h2>
-                <div class="process-flow">
-                    <div class="card">
-                        <h3>Problem Statement Method</h3>
-                        <p>Just asking and answering these questions often points to a cause and solution.</p>
-                    </div>
-                    
-                    <div class="arrow-divider">
-                        <div class="arrow-icon">&darr;</div>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>U.S.E. Method</h3>
-                        <p>Measuring per-resource utilization, saturation, and errors turns "unknown-unknowns" into "known-unknowns".</p>
-                    </div>
-                    
-                    <div class="arrow-divider">
-                        <div class="arrow-icon">&darr;</div>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Scientific Method</h3>
-                        <p>We study the "known-unknowns" by making hypotheses and then testing them.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="tools">
-                <h2>Our Profiling Stack</h2>
-                <p>We don't guess. We measure performance objectively down to the hardware instruction level.</p>
-                <div class="badge-container">
-                    <span class="badge">perf</span>
-                    <span class="badge">eBPF / BCC / bpftrace</span>
-                    <span class="badge">Intel VTune</span>
-                    <span class="badge">Valgrind</span>
-                    <span class="badge">KDAB hotspot / heaptrack</span>
-                    <span class="badge">GDB</span>
-                </div>
-            </section>
+            </section>         
 
              <section id="contact">
                 <h2>Eliminate Bottlenecks</h2>
