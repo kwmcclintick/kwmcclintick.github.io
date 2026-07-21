@@ -331,13 +331,20 @@
                 </ol>
             </section>
 
-            <section id="Our Approach">
-                <h2>Our Approach</h2>
+            <section id="Example">
+                <h2>Example Engagement</h2>
+                <h3>Problem</h3>
+                <p>Signal processing application couldn't process 10Mhz TCP feed of 32-bit ints</p>
+                <h3>Approach</h3>
                 <ol>
-                  <li>Problem statement method</li>
-                  <li>U.S.E. method</li>
-                  <li>Scientific method</li>
+                  <li>Roofline analysis, hardware counters, and flamegraphs reveal a hierarchy of memory, then CPU bottlenecks</li>
+                  <li>Designed mmap-backed memory arena allocator to reduce syscalls for heap</li>
+                  <li>Reduced bit depth of temporaries to minimum that still passed continuous integration testing</li>
+                  <li>Reduced algorithmic complexity and space complexity of signal processing</li>
+                  <li>Microbenchmarked various third-party signal processing backends (linalg, fft, etc.) before implementing via abstraction class</li>
                 </ol>
+                <h3>Outcome</h3>
+                <p>Achieved required throughput while also reducing CPU utilization, RAM usage, and memory fragmentation</p>
             </section>
 
             <section id="contact">
