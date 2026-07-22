@@ -31,6 +31,28 @@
       display: block;       /* Eliminates unwanted gaps beneath the image */
     }
 
+    .tech-section {
+      padding-top: 20px;
+      padding-bottom: 40px;
+    }
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .tech-badge {
+      background: #e3f2fd;
+      color: #0d47a1;
+      font-weight: bold;
+      font-size: 0.95rem;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid #bbdefb;
+      white-space: nowrap;
+    }
+
     .timeline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     .step{flex:1;min-width:140px;background:#fff;padding:18px;border-radius:10px;text-align:center}
     .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -45,7 +67,7 @@
 <body>
   <header class="hero">
     <div>
-      <h1>High‑Performance C++ Solutions</h1>
+      <h1>Mach Systems Consulting</h1>
       <p>Slow software delays releases, increases hardware costs, and limits scalability. I help engineering teams remove the bottlenecks that matter most.</p>
       <a class="btn" href="#">Schedule a Call</a><a class="btn" href="#">LinkedIn</a>
     </div>
@@ -57,8 +79,8 @@
   <section>
     <h2>Industries</h2>
     <div class="cardgrid">
-      <div class="card"><h3>📈 Finance</h3><p>HFT, Market Making, Execution Engines</p></div>
-      <div class="card"><h3>🚗 Autonomous Vehicles</h3><p>ROS, Sensor Processing, Real-time Linux</p></div>
+      <div class="card"><h3>📈 Finance Tech</h3><p>HFT, Market Making, Execution Engines</p></div>
+      <div class="card"><h3>🚗 AV</h3><p>ROS, Sensor Processing, Real-time Linux</p></div>
       <div class="card"><h3>🎮 Game Development</h3><p>Custom Engines, Asset Pipelines</p></div>
       <div class="card"><h3>🌐 Communications</h3><p>Packet Processing, High-volume Infrastructure</p></div>
     </div>
@@ -68,29 +90,28 @@
     <h2>Consulting Capabilities</h2>
     <div class="cardgrid">
       <div class="card"><h3>🚑 Demo Hotfix</h3><p>Fix critical performance issues before milestones.</p></div>
-      <div class="card"><h3>📊 Capacity Planning</h3><p>Validate future scalability before it becomes urgent.</p></div>
-      <div class="card"><h3>⚡ Eliminate Bottlenecks</h3><p>Profile, analyze, optimize, benchmark.</p></div>
+      <div class="card"><h3>📈 Capacity Planning</h3><p>Validate future scalability before it becomes urgent.</p></div>
     </div>
   </section>
 
   <section>
-    <h2>Why Work With Mach?</h2>
+    <h2>Why Work With Mach? We:</h2>
     <div class="cardgrid">
-      <div class="card">🎓<br>PhD in ECE</div>
-      <div class="card">⚡<br>Performance Engineering</div>
-      <div class="card">💻<br>Modern C++20</div>
-      <div class="card">🔄<br>Concurrency Design</div>
+      <div class="card">🎓<br>Combine academic rigor with pragmatic execution</div>
+      <div class="card">💻<br>optimize systems, not just algorithms</div>
+      <div class="card">📊<br>We don't guess, we measure</div>
+      <div class="card">🚀<br>Experience bringing software from idea to production</div>
     </div>
   </section>
 
   <section>
     <h2>How We'll Work Together</h2>
     <div class="timeline">
-      <div class="step">1. Intro Call</div>
-      <div class="step">2. Assessment</div>
-      <div class="step">3. Recommendations</div>
-      <div class="step">4. Optimization Sprint</div>
-      <div class="step">5. Knowledge Transfer</div>
+      <div class="step">👋<br>1. Intro Call</div> 
+      <div class="step">🧠<br>2. Deep-Dive Assessment</div> 
+      <div class="step">📋<br>3. Strategic Recommendations</div> 
+      <div class="step">🚀<br>4. Optimization Sprint</div> 
+      <div class="step">🔄<br>5. Knowledge Transfer</div>
     </div>
   </section>
 
@@ -99,8 +120,24 @@
     <div class="flow">
       <div><h3>Problem</h3><p>10 MHz TCP stream could not be processed.</p></div>
       <div><h3>Investigation</h3><p>Roofline, flamegraphs, hardware counters.</p></div>
-      <div><h3>Optimization</h3><p>Arena allocator, algorithm improvements, backend evaluation.</p></div>
+      <div><h3>Optimization</h3><p>Arena allocator, algorithm improvements, concurrency overhaul, .</p></div>
       <div><h3>Results</h3><p>✔ Throughput target ✔ Lower CPU ✔ Lower RAM ✔ Less fragmentation</p></div>
+    </div>
+  </section>
+
+    <!-- UPDATED TOOL-BASED SEO SECTION -->
+  <section class="tech-section">
+    <h2>Diagnostic, Profiling & Analysis Toolchain</h2>
+    <div class="badge-container">
+      <span class="tech-badge">Linux perf</span>
+      <span class="tech-badge">Intel VTune Profiler</span>
+      <span class="tech-badge">eBPF / BCC / bpftrace</span>
+      <span class="tech-badge">Valgrind Suite</span>
+      <span class="tech-badge">KDAB Hotspot (UI for perf)</span>
+      <span class="tech-badge">KDAB Heaptrack (Memory Allocation)</span>
+      <span class="tech-badge">GDB Advanced Debugging</span>
+      <span class="tech-badge">Cachegrind & Callgrind</span>
+      <span class="tech-badge">Google Benchmark / Catch2</span>
     </div>
   </section>
 
