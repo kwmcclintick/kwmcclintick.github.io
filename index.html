@@ -5,32 +5,86 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Mach Systems Consulting</title>
   <style>
-    body{font-family:Arial,sans-serif;margin:0;color:#222;background:#f7f9fc;line-height:1.6}
-    header,section{max-width:1100px;margin:auto;padding:60px 24px}
-    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
-    .cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-    .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
-    h1{font-size:3rem;margin:.2em 0}
-    h2{text-align:center;margin-bottom:30px}
-    .btn{display:inline-block;background:#1565c0;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;margin-right:10px}
-    
-    /* MODIFIED: Container shrinks to fit its grid column and rounds the image edges */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      color: #475569;
+      background: #f1f5f9;
+      line-height: 1.6;
+    }
+    header, section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 60px 24px;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .cardgrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e2e8f0;
+    }
+    .card p {
+      margin: 8px 0 0 0;
+    }
+    h1, h2, h3 {
+      color: #1e293b;
+    }
+    h1 {
+      font-size: 3rem;
+      margin: .2em 0;
+      line-height: 1.1;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-right: 12px;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background: #1d4ed8;
+    }
+    .btn-secondary {
+      background: #64748b;
+    }
+    .btn-secondary:hover {
+      background: #475569;
+    }
     .illus {
       width: 100%;
       height: auto;
-      border: none;         /* Removed dashed blue border */
+      border: none;
       border-radius: 12px;
-      overflow: hidden;     /* Keeps the 12px rounded corners clean */
+      overflow: hidden;
       display: block;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
     }
-    
-    /* NEW: Forces your high-resolution aistock.png to perfectly auto-fit its column */
     .illus img {
       width: 100%;
       height: auto;
-      display: block;       /* Eliminates unwanted gaps beneath the image */
+      display: block;
     }
-
     .tech-section {
       padding-top: 20px;
       padding-bottom: 40px;
@@ -43,41 +97,75 @@
       margin-top: 20px;
     }
     .tech-badge {
-      background: #e3f2fd;
-      color: #0d47a1;
+      background: #f8fafc;
+      color: #334155;
       font-weight: bold;
       font-size: 0.95rem;
       padding: 8px 16px;
       border-radius: 20px;
-      border: 1px solid #bbdefb;
+      border: 1px solid #cbd5e1;
       white-space: nowrap;
     }
-
-    .timeline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-    .step{flex:1;min-width:140px;background:#fff;padding:18px;border-radius:10px;text-align:center}
-    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .flow div{background:#fff;padding:18px;border-radius:10px}
-    .chart{display:flex;gap:50px;align-items:flex-end;height:180px;justify-content:center}
-    .bar{width:80px;background:#bbb;text-align:center;color:#fff}
-    .after{height:150px;background:#1565c0}.before{height:90px}
-    footer{text-align:center;padding:40px}
-    @media(max-width:800px){.hero,.flow{grid-template-columns:1fr}.timeline{flex-direction:column}}
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .step {
+      flex: 1;
+      min-width: 140px;
+      background: #fff;
+      padding: 18px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .flow div {
+      background: #fff;
+      padding: 18px;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+    footer {
+      text-align: center;
+      padding: 60px 24px;
+      background: #1e293b;
+    }
+    footer .btn {
+      margin: 0 6px;
+    }
+    @media(max-width:800px) {
+      .hero, .flow {
+        grid-template-columns: 1fr;
+      }
+      .timeline {
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header class="hero">
     <div>
       <h1>Mach Systems Consulting</h1>
-      <p>Slow software delays releases, increases hardware costs, and limits scalability. I help engineering teams remove the bottlenecks that matter most.</p>
-      <a class="btn" href="#">Schedule a Call</a><a class="btn" href="#">LinkedIn</a>
+      <p>Slow software delays releases, increases hardware costs, and limits scalability. We help engineering teams remove the bottlenecks that matter most.</p>
+      <a class="btn" href="#">Schedule a Call</a>
+      <a class="btn btn-secondary" href="#">LinkedIn</a>
     </div>
     <div class="illus">
-      <img src="aistock.png" alt="Description of image">
+      <img src="aistock.png" alt="High-performance computing illustration">
     </div>
   </header>
 
-  <section>
-    <h2>Industries</h2>
+  <section aria-labelledby="industries-title">
+    <h2 id="industries-title">Industries</h2>
     <div class="cardgrid">
       <div class="card"><h3>📈 Finance Tech</h3><p>HFT, Market Making, Execution Engines</p></div>
       <div class="card"><h3>🚗 AV</h3><p>ROS, Sensor Processing, Real-time Linux</p></div>
@@ -86,48 +174,47 @@
     </div>
   </section>
 
-  <section>
-    <h2>Consulting Capabilities</h2>
+  <section aria-labelledby="capabilities-title">
+    <h2 id="capabilities-title">Consulting Capabilities</h2>
     <div class="cardgrid">
       <div class="card"><h3>🚑 Demo Hotfix</h3><p>Fix critical performance issues before milestones.</p></div>
       <div class="card"><h3>📈 Capacity Planning</h3><p>Validate future scalability before it becomes urgent.</p></div>
     </div>
   </section>
 
-  <section>
-    <h2>Why Work With Mach? We:</h2>
+  <section aria-labelledby="why-work-title">
+    <h2 id="why-work-title">Why Work With Mach?</h2>
     <div class="cardgrid">
-      <div class="card">🎓<br>Combine academic rigor with pragmatic execution</div>
-      <div class="card">💻<br>optimize systems, not just algorithms</div>
-      <div class="card">📊<br>We don't guess, we measure</div>
-      <div class="card">🚀<br>Experience bringing software from idea to production</div>
+      <div class="card">🎓<p>Combine academic rigor with pragmatic execution</p></div>
+      <div class="card">💻<p>Optimize systems, not just algorithms</p></div>
+      <div class="card">📊<p>We don't guess, we measure</p></div>
+      <div class="card">🚀<p>Experience bringing software from idea to production</p></div>
     </div>
   </section>
 
-  <section>
-    <h2>How We'll Work Together</h2>
+  <section aria-labelledby="workflow-title">
+    <h2 id="workflow-title">How We'll Work Together</h2>
     <div class="timeline">
-      <div class="step">👋<br>1. Intro Call</div> 
-      <div class="step">🧠<br>2. Deep-Dive Assessment</div> 
-      <div class="step">📋<br>3. Strategic Recommendations</div> 
-      <div class="step">🚀<br>4. Optimization Sprint</div> 
+      <div class="step">👋<br>1. Intro Call</div>
+      <div class="step">🧠<br>2. Deep-Dive Assessment</div>
+      <div class="step">📋<br>3. Strategic Recommendations</div>
+      <div class="step">🚀<br>4. Optimization Sprint</div>
       <div class="step">🔄<br>5. Knowledge Transfer</div>
     </div>
   </section>
 
-  <section>
-    <h2>Case Study</h2>
+  <section aria-labelledby="case-study-title">
+    <h2 id="case-study-title">Technical Deep Dive</h2>
     <div class="flow">
       <div><h3>Problem</h3><p>10 MHz TCP stream from radio could not be processed by signal processing software.</p></div>
       <div><h3>Investigation</h3><p>Roofline, flamegraphs, histograms, kernel/hardware counters.</p></div>
       <div><h3>Optimization</h3><p>Arena allocator, algorithm improvements, lock-free buffer, tuning to production environment.</p></div>
-      <div><h3>Results</h3><p>✔ Throughput target met ✔ Lower CPU ✔ Lower RAM ✔ Less fragmentation</p></div>
+      <div><h3>Results</h3><p>✔ Throughput target met<br>✔ Lower CPU<br>✔ Lower RAM<br>✔ Less fragmentation</p></div>
     </div>
   </section>
 
-    <!-- UPDATED TOOL-BASED SEO SECTION -->
-  <section class="tech-section">
-    <h2>Diagnostic, Profiling & Analysis Toolchain</h2>
+  <section class="tech-section" aria-labelledby="toolchain-title">
+    <h2 id="toolchain-title">Diagnostic, Profiling & Analysis Toolchain</h2>
     <div class="badge-container">
       <span class="tech-badge">Linux perf</span>
       <span class="tech-badge">Intel VTune Profiler</span>
@@ -142,7 +229,9 @@
   </section>
 
   <footer>
-    <a class="btn" href="#">Schedule a Call</a><a class="btn" href="#">LinkedIn</a>
+    <a class="btn" href="#">Schedule a Call</a>
+    <a class="btn btn-secondary" href="#">LinkedIn</a>
   </footer>
+
 </body>
 </html>
