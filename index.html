@@ -1,363 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="High-performance C++ consulting. I help engineering teams eliminate performance bottlenecks, meet latency targets, and prepare complex systems for growth.">
-    <title>Mach Systems Consulting | High-Performance C++ Solutions</title>
-    <style>
-        :root {
-            --bg-color: #0d1117;
-            --text-color: #c9d1d9;
-            --text-muted: #8b949e;
-            --accent-color: #58a6ff;
-            --accent-glow: rgba(88, 166, 255, 0.15);
-            --card-bg: #161b22;
-            --card-hover: #1f242c;
-            --border-color: #30363d;
-            --border-hover: #444c56;
-            --success-color: #2ea44f;
-            --success-hover: #3fb950;
-            --tooltip-bg: #1f242c;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 4rem 1.5rem;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 750px;
-            margin: 0 auto;
-        }
-
-        header {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 2.5rem;
-            margin-bottom: 3.5rem;
-        }
-
-        h1 {
-            color: #fff;
-            font-size: 2.75rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            margin-bottom: 0.5rem;
-        }
-
-        h2 {
-            color: #fff;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-top: 4rem;
-            margin-bottom: 1.5rem;
-            border-left: 3px solid var(--accent-color);
-            padding-left: 0.75rem;
-            letter-spacing: -0.01em;
-        }
-
-        p {
-            margin-bottom: 1.25rem;
-            font-size: 1.05rem;
-            color: #e6edf3;
-        }
-
-        .highlight {
-            color: var(--accent-color);
-            font-weight: 500;
-            font-size: 1.2rem;
-            letter-spacing: -0.01em;
-        }
-
-        /* Responsive Badge Container Architecture */
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .badge-wrapper {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        .badge {
-            background: #161b22;
-            border: 1px solid var(--border-color);
-            color: var(--accent-color);
-            padding: 0.35rem 0.85rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
-            transition: border-color 0.2s ease, background-color 0.2s ease;
-            cursor: pointer;
-            width: fit-content;
-        }
-
-        .badge:hover {
-            border-color: var(--accent-color);
-            background: var(--accent-glow);
-        }
-
-        /* Desktop In-Frame Tooltip System */
-        .tooltip-text {
-            background: var(--tooltip-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            padding: 0.4rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-family: ui-monospace, SFMono-Regular, monospace;
-            white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            pointer-events: none;
-            opacity: 0;
-            transform: translateY(4px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            position: absolute;
-            top: calc(100% + 6px);
-            left: 0;
-            z-index: 10;
-        }
-
-        /* Prevent specific edge bleeds by shifting the final element's tooltip layout alignment */
-        .badge-wrapper:last-child .tooltip-text {
-            left: auto;
-            right: 0;
-        }
-
-        .badge-wrapper:hover .tooltip-text {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Dynamic Grid Layouts */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.25rem;
-            margin-top: 1.5rem;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 1.75rem;
-            border-radius: 8px;
-            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            border-color: var(--border-hover);
-            background-color: var(--card-hover);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        }
-
-        .card h3 {
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            letter-spacing: -0.01em;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 0;
-            line-height: 1.5;
-        }
-
-        /* Refined Call to Action Buttons */
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--success-color);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border-radius: 6px;
-            text-decoration: none;
-            transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.1s ease;
-            cursor: pointer;
-            border: 1px solid rgba(245, 245, 245, 0.05);
-        }
-
-        .btn:hover {
-            background-color: var(--success-hover);
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 6rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-family: ui-monospace, SFMono-Regular, monospace;
-        }
-
-        /* Mobile Viewport Safety Optimization Blueprint */
-        @media (max-width: 600px) {
-            body {
-                padding: 2rem 1rem;
-            }
-            h1 {
-                font-size: 2.2rem;
-            }
-            .badge-container {
-                flex-direction: column;
-                gap: 0.75rem;
-            }
-            .badge-wrapper {
-                width: 100%;
-            }
-            .badge {
-                width: 100%;
-                text-align: left;
-            }
-            /* Transforms floating tooltips into persistent, structural micro-copy on mobile devices */
-            .tooltip-text {
-                position: relative;
-                top: 0;
-                left: 0 !important;
-                right: 0 !important;
-                opacity: 1;
-                transform: none;
-                box-shadow: none;
-                background: transparent;
-                border: none;
-                padding: 0.25rem 0 0 0.5rem;
-                white-space: normal;
-                border-left: 2px solid var(--border-color);
-                margin-top: 4px;
-                border-radius: 0;
-            }
-        }
-    </style>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mach Systems Consulting</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;color:#222;background:#f7f9fc;line-height:1.6}
+header,section{max-width:1100px;margin:auto;padding:60px 24px}
+.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+h1{font-size:3rem;margin:.2em 0}
+h2{text-align:center;margin-bottom:30px}
+.btn{display:inline-block;background:#1565c0;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;margin-right:10px}
+.illus{height:280px;border:2px dashed #1565c0;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#1565c0}
+.timeline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.step{flex:1;min-width:140px;background:#fff;padding:18px;border-radius:10px;text-align:center}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.flow div{background:#fff;padding:18px;border-radius:10px}
+.chart{display:flex;gap:50px;align-items:flex-end;height:180px;justify-content:center}
+.bar{width:80px;background:#bbb;text-align:center;color:#fff}
+.after{height:150px;background:#1565c0}.before{height:90px}
+footer{text-align:center;padding:40px}
+@media(max-width:800px){.hero,.flow{grid-template-columns:1fr}.timeline{flex-direction:column}}
+</style></head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Mach Systems Consulting</h1>
-            <p class="highlight">High-Performance C++ Solutions</p>
-        </header>
+<header class="hero">
+<div>
+<h1>High‑Performance C++ Solutions</h1>
+<p>Slow software delays releases, increases hardware costs, and limits scalability. I help engineering teams remove the bottlenecks that matter most.</p>
+<a class="btn" href="#">Schedule a Call</a><a class="btn" href="#">LinkedIn</a>
+</div>
+<div class="illus">Technical Illustration Placeholder</div>
+</header>
 
-        <p>Slow software delays releases, increases hardware costs, and limits scalability. I help engineering teams remove the bottlenecks that matter most.</p>
-        <div class="contact-links">
-            <a href="mailto:kwmcclintick@gmail.com" class="btn">Schedule a call</a>
-            <a href="https://www.linkedin.com/in/kyle-mcclintick-790813102" target="_blank" rel="noopener noreferrer" class="btn">Connect on LinkedIn</a>
-        </div>
-        
-        <section id="who">
-            <h2>Industries</h2>
-            <div class="badge-container">
-                <div class="badge-wrapper">
-                    <span class="badge">Finance Technology</span>
-                    <span class="tooltip-text">HFT, Market Making, Execution Engines</span>
-                </div>
-                <div class="badge-wrapper">
-                    <span class="badge">Autonomous Vehicles</span>
-                    <span class="tooltip-text">ROS Tuning, Sensor Processing, Real-time Linux</span>
-                </div>
-                <div class="badge-wrapper">
-                    <span class="badge">Game Development</span>
-                    <span class="tooltip-text">Custom Engines, Asset Pipelines, Low-overhead Systems</span>
-                </div>
-                <div class="badge-wrapper">
-                    <span class="badge">Communications & Networking</span>
-                    <span class="tooltip-text">High-volume Infrastructure, Packet Processing</span>
-                </div>
-            </div>
-        </section>
+<section><h2>Industries</h2><div class="cardgrid">
+<div class="card"><h3>📈 Finance</h3><p>HFT, Market Making, Execution Engines</p></div>
+<div class="card"><h3>🚗 Autonomous Vehicles</h3><p>ROS, Sensor Processing, Real-time Linux</p></div>
+<div class="card"><h3>🎮 Game Development</h3><p>Custom Engines, Asset Pipelines</p></div>
+<div class="card"><h3>🌐 Communications</h3><p>Packet Processing, High-volume Infrastructure</p></div>
+</div></section>
 
-        <main>
-            <section id="services">
-                <h2>Consulting Capabilities</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>Demo Hotfix</h3>
-                        <p>Your software isn't meeting throughput or latency goals before an important milestone. I'll identify bottlenecks, prioritize fixes, and focus engineering effort where it has the highest impact</p>
-                    </div>
-                    <div class="card">
-                        <h3>Capacity Planning</h3>
-                        <p>Understand whether your architecture will meet future workload demands before scaling becomes an emergency.</p>
-                    </div>
-                </div>
-            </section>
+<section><h2>Consulting Capabilities</h2><div class="cardgrid">
+<div class="card"><h3>🚑 Demo Hotfix</h3><p>Fix critical performance issues before milestones.</p></div>
+<div class="card"><h3>📊 Capacity Planning</h3><p>Validate future scalability before it becomes urgent.</p></div>
+<div class="card"><h3>⚡ Eliminate Bottlenecks</h3><p>Profile, analyze, optimize, benchmark.</p></div>
+</div></section>
 
-            <section id="why me">
-                <h2>Why Work With Mach?</h2>
-                    <li>PhD in Electrical and Computer Engineering</li>
-                    <li>Experience building and optimizing performance-critical C++ from idea to product</li>
-                    <li>Modern C++20</li>
-                    <li>Diverse concurrency design</li>
-            </section>
+<section><h2>Why Work With Mach?</h2><div class="cardgrid">
+<div class="card">🎓<br>PhD in ECE</div><div class="card">⚡<br>Performance Engineering</div><div class="card">💻<br>Modern C++20</div><div class="card">🔄<br>Concurrency Design</div>
+</div></section>
 
-            <section id="how it works">
-                <h2>How We'll Work Together</h2>
-                <ol>
-                  <li>Intro call</li>
-                  <li>Performance assessment</li>
-                  <li>Recommendations</li>
-                  <li>Optimization sprint</li>
-                  <li>Knowledge transfer</li>
-                </ol>
-            </section>
+<section><h2>How We'll Work Together</h2><div class="timeline">
+<div class="step">1. Intro Call</div><div class="step">2. Assessment</div><div class="step">3. Recommendations</div><div class="step">4. Optimization Sprint</div><div class="step">5. Knowledge Transfer</div>
+</div></section>
 
-            <section id="Example">
-                <h2>Example Engagement</h2>
-                <h3>Problem</h3>
-                <p>Signal processing application couldn't process 10Mhz TCP feed of 32-bit ints</p>
-                <h3>Approach</h3>
-                <ol>
-                  <li>Roofline analysis, hardware counters, and flamegraphs reveal a hierarchy of memory, then CPU bottlenecks</li>
-                  <li>Designed mmap-backed memory arena allocator to reduce syscalls for heap</li>
-                  <li>Reduced bit depth of temporaries to minimum that still passed continuous integration testing</li>
-                  <li>Reduced algorithmic complexity and space complexity of signal processing</li>
-                  <li>Microbenchmarked various third-party signal processing backends (linalg, fft, etc.) before implementing via abstraction class</li>
-                </ol>
-                <h3>Outcome</h3>
-                <p>Achieved required throughput while also reducing CPU utilization, RAM usage, and memory fragmentation</p>
-            </section>
+<section><h2>Case Study</h2><div class="flow">
+<div><h3>Problem</h3><p>10 MHz TCP stream could not be processed.</p></div>
+<div><h3>Investigation</h3><p>Roofline, flamegraphs, hardware counters.</p></div>
+<div><h3>Optimization</h3><p>Arena allocator, algorithm improvements, backend evaluation.</p></div>
+<div><h3>Results</h3><p>✔ Throughput target ✔ Lower CPU ✔ Lower RAM ✔ Less fragmentation</p></div>
+</div></section>
 
-            <section id="contact">
-                <h2>Eliminate Bottlenecks</h2>
-                <p>Using profiling, tracing, and performance analysis, we'll identify exactly where CPU time is spent and implement targeted optimizations that improve throughput without sacrificing maintainability.</p>
-                <div class="contact-links">
-                    <a href="mailto:kwmcclintick@gmail.com" class="btn">Schedule a call</a>
-                    <a href="https://www.linkedin.com/in/kyle-mcclintick-790813102" target="_blank" rel="noopener noreferrer" class="btn">Connect on LinkedIn</a>
-                </div>
-            </section>
-            
-        </main>
-        <footer>
-            <p>&copy; 2026 Mach Consulting. All code optimized to O3.</p>
-        </footer>
-    </div>
+<section><h2>Typical Improvement</h2><div class="chart">
+<div class="bar before">Before</div><div class="bar after">After</div>
+</div></section>
+
+<footer><a class="btn" href="#">Schedule a Call</a><a class="btn" href="#">LinkedIn</a></footer>
+</body></html>
