@@ -1,69 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Mach Systems Consulting</title>
-<style>
-body{font-family:Arial,sans-serif;margin:0;color:#222;background:#f7f9fc;line-height:1.6}
-header,section{max-width:1100px;margin:auto;padding:60px 24px}
-.hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
-.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
-h1{font-size:3rem;margin:.2em 0}
-h2{text-align:center;margin-bottom:30px}
-.btn{display:inline-block;background:#1565c0;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;margin-right:10px}
-.illus{width: 400px;height:280px;border:2px dashed #1565c0;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#1565c0}
-.timeline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.step{flex:1;min-width:140px;background:#fff;padding:18px;border-radius:10px;text-align:center}
-.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.flow div{background:#fff;padding:18px;border-radius:10px}
-.chart{display:flex;gap:50px;align-items:flex-end;height:180px;justify-content:center}
-.bar{width:80px;background:#bbb;text-align:center;color:#fff}
-.after{height:150px;background:#1565c0}.before{height:90px}
-footer{text-align:center;padding:40px}
-@media(max-width:800px){.hero,.flow{grid-template-columns:1fr}.timeline{flex-direction:column}}
-</style></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mach Systems Consulting</title>
+  <style>
+    body{font-family:Arial,sans-serif;margin:0;color:#222;background:#f7f9fc;line-height:1.6}
+    header,section{max-width:1100px;margin:auto;padding:60px 24px}
+    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+    .cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+    .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+    h1{font-size:3rem;margin:.2em 0}
+    h2{text-align:center;margin-bottom:30px}
+    .btn{display:inline-block;background:#1565c0;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;margin-right:10px}
+    
+    /* MODIFIED: Container shrinks to fit its grid column and rounds the image edges */
+    .illus {
+      width: 100%;
+      height: auto;
+      border: none;         /* Removed dashed blue border */
+      border-radius: 12px;
+      overflow: hidden;     /* Keeps the 12px rounded corners clean */
+      display: block;
+    }
+    
+    /* NEW: Forces your high-resolution aistock.png to perfectly auto-fit its column */
+    .illus img {
+      width: 100%;
+      height: auto;
+      display: block;       /* Eliminates unwanted gaps beneath the image */
+    }
+
+    .timeline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .step{flex:1;min-width:140px;background:#fff;padding:18px;border-radius:10px;text-align:center}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .flow div{background:#fff;padding:18px;border-radius:10px}
+    .chart{display:flex;gap:50px;align-items:flex-end;height:180px;justify-content:center}
+    .bar{width:80px;background:#bbb;text-align:center;color:#fff}
+    .after{height:150px;background:#1565c0}.before{height:90px}
+    footer{text-align:center;padding:40px}
+    @media(max-width:800px){.hero,.flow{grid-template-columns:1fr}.timeline{flex-direction:column}}
+  </style>
+</head>
 <body>
-<header class="hero">
-<div>
-<h1>High‑Performance C++ Solutions</h1>
-<p>Slow software delays releases, increases hardware costs, and limits scalability. I help engineering teams remove the bottlenecks that matter most.</p>
-<a class="btn" href="#">Schedule a Call</a><a class="btn" href="#">LinkedIn</a>
-</div>
+  <header class="hero">
+    <div>
+      <h1>High‑Performance C++ Solutions</h1>
+      <p>Slow software delays releases, increases hardware costs, and limits scalability. I help engineering teams remove the bottlenecks that matter most.</p>
+      <a class="btn" href="#">Schedule a Call</a><a class="btn" href="#">LinkedIn</a>
+    </div>
+    <div class="illus">
+      <img src="aistock.png" alt="Description of image">
+    </div>
+  </header>
 
-<div class="illus">
-<img src="aistock.png" alt="Description of image">
-</div>
-</header>
+  <section>
+    <h2>Industries</h2>
+    <div class="cardgrid">
+      <div class="card"><h3>📈 Finance</h3><p>HFT, Market Making, Execution Engines</p></div>
+      <div class="card"><h3>🚗 Autonomous Vehicles</h3><p>ROS, Sensor Processing, Real-time Linux</p></div>
+      <div class="card"><h3>🎮 Game Development</h3><p>Custom Engines, Asset Pipelines</p></div>
+      <div class="card"><h3>🌐 Communications</h3><p>Packet Processing, High-volume Infrastructure</p></div>
+    </div>
+  </section>
 
-<section><h2>Industries</h2><div class="cardgrid">
-<div class="card"><h3>📈 Finance</h3><p>HFT, Market Making, Execution Engines</p></div>
-<div class="card"><h3>🚗 Autonomous Vehicles</h3><p>ROS, Sensor Processing, Real-time Linux</p></div>
-<div class="card"><h3>🎮 Game Development</h3><p>Custom Engines, Asset Pipelines</p></div>
-<div class="card"><h3>🌐 Communications</h3><p>Packet Processing, High-volume Infrastructure</p></div>
-</div></section>
+  <section>
+    <h2>Consulting Capabilities</h2>
+    <div class="cardgrid">
+      <div class="card"><h3>🚑 Demo Hotfix</h3><p>Fix critical performance issues before milestones.</p></div>
+      <div class="card"><h3>📊 Capacity Planning</h3><p>Validate future scalability before it becomes urgent.</p></div>
+      <div class="card"><h3>⚡ Eliminate Bottlenecks</h3><p>Profile, analyze, optimize, benchmark.</p></div>
+    </div>
+  </section>
 
-<section><h2>Consulting Capabilities</h2><div class="cardgrid">
-<div class="card"><h3>🚑 Demo Hotfix</h3><p>Fix critical performance issues before milestones.</p></div>
-<div class="card"><h3>📊 Capacity Planning</h3><p>Validate future scalability before it becomes urgent.</p></div>
-<div class="card"><h3>⚡ Eliminate Bottlenecks</h3><p>Profile, analyze, optimize, benchmark.</p></div>
-</div></section>
+  <section>
+    <h2>Why Work With Mach?</h2>
+    <div class="cardgrid">
+      <div class="card">🎓<br>PhD in ECE</div>
+      <div class="card">⚡<br>Performance Engineering</div>
+      <div class="card">💻<br>Modern C++20</div>
+      <div class="card">🔄<br>Concurrency Design</div>
+    </div>
+  </section>
 
-<section><h2>Why Work With Mach?</h2><div class="cardgrid">
-<div class="card">🎓<br>PhD in ECE</div><div class="card">⚡<br>Performance Engineering</div><div class="card">💻<br>Modern C++20</div><div class="card">🔄<br>Concurrency Design</div>
-</div></section>
+  <section>
+    <h2>How We'll Work Together</h2>
+    <div class="timeline">
+      <div class="step">1. Intro Call</div>
+      <div class="step">2. Assessment</div>
+      <div class="step">3. Recommendations</div>
+      <div class="step">4. Optimization Sprint</div>
+      <div class="step">5. Knowledge Transfer</div>
+    </div>
+  </section>
 
-<section><h2>How We'll Work Together</h2><div class="timeline">
-<div class="step">1. Intro Call</div><div class="step">2. Assessment</div><div class="step">3. Recommendations</div><div class="step">4. Optimization Sprint</div><div class="step">5. Knowledge Transfer</div>
-</div></section>
+  <section>
+    <h2>Case Study</h2>
+    <div class="flow">
+      <div><h3>Problem</h3><p>10 MHz TCP stream could not be processed.</p></div>
+      <div><h3>Investigation</h3><p>Roofline, flamegraphs, hardware counters.</p></div>
+      <div><h3>Optimization</h3><p>Arena allocator, algorithm improvements, backend evaluation.</p></div>
+      <div><h3>Results</h3><p>✔ Throughput target ✔ Lower CPU ✔ Lower RAM ✔ Less fragmentation</p></div>
+    </div>
+  </section>
 
-<section><h2>Case Study</h2><div class="flow">
-<div><h3>Problem</h3><p>10 MHz TCP stream could not be processed.</p></div>
-<div><h3>Investigation</h3><p>Roofline, flamegraphs, hardware counters.</p></div>
-<div><h3>Optimization</h3><p>Arena allocator, algorithm improvements, backend evaluation.</p></div>
-<div><h3>Results</h3><p>✔ Throughput target ✔ Lower CPU ✔ Lower RAM ✔ Less fragmentation</p></div>
-</div></section>
-
-<footer><a class="btn" href="#">Schedule a Call</a><a class="btn" href="#">LinkedIn</a></footer>
-</body></html>
+  <footer>
+    <a class="btn" href="#">Schedule a Call</a><a class="btn" href="#">LinkedIn</a>
+  </footer>
+</body>
+</html>
